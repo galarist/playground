@@ -1,5 +1,5 @@
 # playground
-Small sized front-end projects for fun. 🍵
+Small sized front-end projects for fun and practice. 🍵
 ----
 Demo | Name | Desc | Source
 ------------ | ------------- | ------------- | -------------

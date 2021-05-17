@@ -36,11 +36,11 @@ hr {
   text-shadow: 2px 1px 4px rgb(74, 74, 74);
   background: #d0d0d0;
   -webkit-box-shadow: inset 6px 6px 16px 0 rgba(0, 0, 0, 0.1),
-              inset -16px -6px 20px 10px  rgba(255, 255, 255, 0.2);
+              inset -16px -6px 20px 10px  rgba(255, 255, 255, 0.15);
   -moz-box-shadow: inset 6px 6px 16px 0 rgba(0, 0, 0, 0.1),
-              inset -16px -6px 20px 10px  rgba(255, 255, 255, 0.5);
+              inset -16px -6px 20px 10px  rgba(255, 255, 255, 0.15);
   box-shadow: inset 6px 6px 16px 0 rgba(0, 0, 0, 0.1),
-              inset -16px -6px 20px 10px  rgba(255, 255, 255, 0.2);
+              inset -16px -6px 20px 10px  rgba(255, 255, 255, 0.15);
 }
 
 #dayName {

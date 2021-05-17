@@ -43,4 +43,4 @@ function currentTime()
   dayIntro.innerHTML = presentDay;
 }
 
-currentTime();  //calling currentTime() function to initiate the process 
+currentTime();  //calling currentTime() function to initiate the process

@@ -1,0 +1,436 @@
+/* Google font */
+@import url('https://fonts.googleapis.com/css?family=Orbitron');
+
+*{
+    margin: 0;
+    padding: 0;
+
+  }
+  html,body{
+    display: grid;
+    place-items: center;
+
+  }
+  #dayIntro
+{
+    font-size: 40px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    border: 7px solid rgb(17,129,134);
+    border-radius: 10px;
+    margin: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    padding: 15px;
+    background: linear-gradient(180deg, #a8b9d3,rgb(173, 227, 229));
+}
+  .container{
+    height: 120px;
+    width: 550px;
+    position: relative;
+    background: linear-gradient(135deg, #14ffe9, #ffeb3b, #ff00e0);
+    border-radius: 10px;
+    cursor: default;
+
+  }
+  .container .dispClock,
+  .container {
+    position: absolute;
+    top: 28%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .container .dispClock{
+    top: 50%;
+    height: 105px;
+    width: 535px;
+    background: linear-gradient(147deg, #000000 0%, #2c3e50 74%);
+    border-radius: 6px;
+    text-align: center;
+  }
+  .dispClock #time{
+    line-height: 85px;
+    color: #fff;
+    font-size: 70px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(135deg, #14ffe9, #ffeb3b, #ff00e0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+  }
+JavaScript Code
+Now here comes the main part. The entire code for the working of the clock is written within the currentTime() function.
+
+Let's discuss everything step by step:-
+
+Step 1:- Create a function currentTime().
+function currentTime()
+{
+  //code to be executed
+}
+Step 2:- Inside the function, create an object of Date Class which allows you to call day, year, month, day, hour, minute, second, etc.
+function currentTime()
+{
+    const clock = document.getElementById("time")
+    const dayIntro=document.getElementById("dayName");
+
+    let time = new Date();        // creating object of Date class
+    let dayName=time.getDay();
+    let month=time.getMonth();
+    let year=time.getFullYear();
+    let date=time.getDate();
+    let hour = time.getHours();
+    let min = time.getMinutes();
+    let sec = time.getSeconds();
+}
+Step 3:- The Date object works on the 24-hour format so we change the hour back to 1 when it gets larger than 12. The AM/PM also changes according to that.
+var am_pm = "AM";
+   if(hour==12)
+   am_pm = "PM";
+
+   if (hour > 12)
+   {
+     hour -= 12;
+     am_pm = "PM";
+   }
+   if (hour == 0)
+   {
+     hour = 12;
+     am_pm = "AM";
+   }
+Step 4:- The obtained hours, minutes, and seconds from Date object will be displayed in single-digit if less than 10. To display the elements of time in two-digit format, a 0 is appended before them whenever they are less than 10.
+ hour = hour < 10 ? "0" + hour : hour;
+ min = min < 10 ? "0" + min : min;
+ sec = sec < 10 ? "0" + sec : sec;
+Step 5:- Now once our time is ready, make a string using the same HH: MM: SS format changing the hour, minute, and a second value with the values, we get from Date object methods.
+//value of current time
+let currentTime = hour + ":" + min + ":" + sec +" "+ am_pm;
+
+// value of present day(Day, Month, Year)
+var months=["January","February","March","April","May","June","July","August","September","October","November","December"];
+var week=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+var presentDay=week[dayName]+", "+months[month]+" "+date+", "+year;
+Step 6:- Once the string is ready, let's display it in the div which we made before. This is done by obtaining the div using the document.getElementById method and give our time as the content of the div using the innerHTML property.
+const clock = document.getElementById("time");
+const dayIntro=document.getElementById("dayName");
+
+clock.innerHTML = currentTime;
+dayIntro.innerHTML = presentDay;
+Step 7:- To call the function every second use setInterval() method and set the time-interval as 1000ms which is equal to 1s.(Call setInterval() method outside the function).
+setInterval(currentTime, 1000);
+Step 8:- Call the function currentTime() at the end to start function at exact reloading of page.
+currentTime();  //calling currentTime() function to initiate the process
+Complete javascript code
+
+index.js
+setInterval(currentTime, 1000);
+
+function currentTime()
+{
+    let time = new Date();   // creating object of Date class
+    let dayName=time.getDay();
+    let month=time.getMonth();
+    let year=time.getFullYear();
+    let date=time.getDate();
+    let hour = time.getHours();
+    let min = time.getMinutes();
+    let sec = time.getSeconds();
+
+    var am_pm = "AM";
+    if(hour==12)
+    am_pm = "PM";
+    if (hour > 12) {
+    hour -= 12;
+    am_pm = "PM";
+    }
+    if (hour == 0) {
+    hour = 12;
+    am_pm = "AM";
+    }
+
+    hour = hour < 10 ? "0" + hour : hour;
+    min = min < 10 ? "0" + min : min;
+    sec = sec < 10 ? "0" + sec : sec;
+
+   //value of current time
+   let currentTime = hour + ":" + min + ":" + sec +" "+ am_pm;
+
+  // value of present day(Day, Month, Year)
+  var months=["January","February","March","April","May","June","July","August","September","October","November","December"];
+  var week=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+  var presentDay=week[dayName]+", "+months[month]+" "+date+", "+year;
+
+  const clock = document.getElementById("time");
+  const dayIntro=document.getElementById("dayName");
+
+  clock.innerHTML = currentTime;
+  dayIntro.innerHTML = presentDay;
+}
+
+currentTime();  //calling currentTime() function to initiate the process
+congrats.gif
+You have just created a digital clock. It will look something like this!.
+Demo
+
+Live Demo
+You can find the code at my GitHub Repository
+If you enjoyed learning and find it useful please do like and share so that, it reaches others as well 🤝
+
+Thanks for reading 😃
+I would ❤ to connect with you at Twitter | LinkedIn | GitHub
+
+Let me know in the comment section if you have any doubt or feedback.
+
+You should definitely check out my other Blogs:
+
+Introduction to JavaScript: Basics
+Playing with JavaScript Objects
+7 JavaScript Data Structures you must know
+Git & Github: All you need to know
+Introduction to ReactJS
+See you in my next Blog article, Take care!!
+
+Happy Learning😃😃
+
+Discussion (11)
+Subscribe
+pic
+Add to the discussion
+
+kiranrajvjd profile image
+Kiran Raj R
+•
+May 15
+
+You can add "javascript" after your opening backticks for syntax highlighting.
+
+
+4
+ likes
+Reply
+
+nehasoni__ profile image
+Neha Soni
+•
+May 16
+
+Woww... Thank you very much for this!
+This really is awesome😍😍
+
+
+2
+ likes
+Reply
+
+kiranrajvjd profile image
+Kiran Raj R
+•
+May 16
+
+Happy that the tip was useful
+
+
+2
+ likes
+Reply
+
+lukeshiru profile image
+△ LUKE知る
+•
+May 16 • Edited on May 16
+
+Date has some methods to get the current date and time that are quite better than getting one by one. I recently found a similar post and added some suggestions there that would be pretty much the same for this one. Sharing if you're interested:
+
+dev.to/lukeshiru/comment/1eaca
+
+In short: You don't need to calculate AM/PM, and you can use template strings to make this simpler.
+
+Cheers!
+
+
+2
+ likes
+Reply
+
+nehasoni__ profile image
+Neha Soni
+•
+May 16
+
+Thanks for sharing the link. I’ll check it out!😊🤝
+
+
+1
+ like
+Reply
+
+inhuofficial profile image
+InHuOfficial
+•
+May 15
+
+Quick heads up, in your example (demo) the AM and PM can get pushed down onto the following line if the numbers are all wide numbers. Just needs a tiny bit of extra space adding to the container.
+
+Other than that, looks great, very psychedelic! ❤️
+
+
+3
+ likes
+Reply
+
+nehasoni__ profile image
+Neha Soni
+•
+May 16
+
+Don't worry I will check it and update the code 😊🤝
+
+
+2
+ likes
+Reply
+
+itzmeelvis profile image
+⛳Elvis Awowari da‘’ HackModder™⛹
+•
+May 15
+
+Cool
+
+
+3
+ likes
+Reply
+
+nehasoni__ profile image
+Neha Soni
+•
+May 16
+
+Thank you🤝
+
+
+2
+ likes
+Reply
+
+bubblicious profile image
+bubblicious-a
+•
+May 16
+
+great work
+
+
+2
+ likes
+Reply
+
+nehasoni__ profile image
+Neha Soni
+•
+May 17
+
+Thank you😊🙌
+
+
+1
+ like
+Reply
+Code of Conduct • Report abuse
+Read next
+tanzimibthesam profile image
+Vue Js for beginners part 3 Form Handling
+Tanzim Ibthesam - May 11
+
+aliafarin profile image
+PWA push notification on IOS
+aliafarin - Apr 27
+
+kaisukez profile image
+My favorite way to manage config file (javascript example)
+kaisukez - May 10
+
+siddharth2016 profile image
+How To Convert Markdown To HTML Using Python
+Siddharth Chandra - May 10
+
+Neha Soni profile image
+Neha Soni
+Student at Chitkara University | Full Stack Developer | Technical Blogger
+Follow
+LOCATION
+Punjab,India
+JOINED
+25 Apr 2021
+More from Neha Soni
+7 JavaScript Data Structures you must know
+#javascript #webdev #programming #datastructures
+Playing with JavaScript Objects
+#javascript #webdev #beginners #programming
+Introduction to JavaScript: Basics
+#javascript #webdev #devops
+/* Google font */
+@import url('https://fonts.googleapis.com/css?family=Orbitron');
+
+*{
+    margin: 0;
+    padding: 0;
+
+  }
+  html,body{
+    display: grid;
+    place-items: center;
+
+  }
+  #dayIntro
+{
+    font-size: 40px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    border: 7px solid rgb(17,129,134);
+    border-radius: 10px;
+    margin: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    padding: 15px;
+    background: linear-gradient(180deg, #a8b9d3,rgb(173, 227, 229));
+}
+  .container{
+    height: 120px;
+    width: 550px;
+    position: relative;
+    background: linear-gradient(135deg, #14ffe9, #ffeb3b, #ff00e0);
+    border-radius: 10px;
+    cursor: default;
+
+  }
+  .container .dispClock,
+  .container {
+    position: absolute;
+    top: 28%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .container .dispClock{
+    top: 50%;
+    height: 105px;
+    width: 535px;
+    background: linear-gradient(147deg, #000000 0%, #2c3e50 74%);
+    border-radius: 6px;
+    text-align: center;
+  }
+  .dispClock #time{
+    line-height: 85px;
+    color: #fff;
+    font-size: 70px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(135deg, #14ffe9, #ffeb3b, #ff00e0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+  }

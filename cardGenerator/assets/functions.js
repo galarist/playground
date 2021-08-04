@@ -13,6 +13,10 @@ function generate(params) {
     } else {
         img.style.display = "none";
     }
+
+    var card = document.getElementById("card")
+    var scaler = document.getElementById("scaler").value
+    card.style.transform = 'scale('+ scaler +')';
 }
 
 var loadFile = function (event) {

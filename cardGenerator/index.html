@@ -11,7 +11,9 @@
         <label for="name">Enter your name:</label>
         <input type="text" id="name">
         <label for="color">Select your color:</label>
-        <input type="color" name="" id="color">
+        <input type="color" name="" id="color" value="#f3f3f3">
+        <label for="scaler">Scale your card:</label>
+        <input type="number" name="" id="scaler">
         <label for="profilePic">Select your picture:</label>
         <input type="file" name="pfp" id="profilePic" onchange="loadFile(event)" accept="image/png, image/gif, image/jpeg">
         <p><input type="button" value="Generate" onclick="generate()"></p>

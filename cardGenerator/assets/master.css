@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(243, 243, 243);
+}
+
+#inputArea {
+    text-align: center;
+    margin: 8px;
+}
+
+#inputArea p {
+    margin: 8px;
+}
+
+#card {
+    width: 419px;
+    min-height: 610px;
+    border: 2px solid lightslategray;
+    border-radius: 3px;
+    margin: 0 auto;
+}
+
+#profilePicture img {
+    width: 300px;
+    height: 300px;
+    border: 2px solid rgb(112, 119, 126);
+    margin: 10px;
+    border-radius: 3px;
+    display: none;
+    margin: 20px auto;
+}
+
+h3 {
+    text-align: center;
+}
